@@ -1,0 +1,7 @@
+productId;quantity;unitaryPrice;isDiscounted;comment
+1;10;100;FALSE;
+2;1;200;FALSE;
+3;10;1000;FALSE;
+3;2;700;TRUE;operation 123
+4;5;500;TRUE;
+5;1;100;FALSE;
