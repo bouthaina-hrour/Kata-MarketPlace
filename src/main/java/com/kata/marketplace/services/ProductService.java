@@ -12,9 +12,16 @@ public class ProductService {
     private final CsvReader csvReader;
     private final ProductConverter converter;
 
+    List<String[]> invalidProducts;
+
     public ProductService(CsvReader csvReader, ProductConverter converter) {
         this.csvReader = csvReader;
         this.converter = converter;
+        invalidProducts=new ArrayList<>();
+    }
+
+    public List<String[]> getInvalidProducts() {
+        return invalidProducts;
     }
 
     public List<Product> readProducts(String filePath) throws IOException, CsvException {
@@ -22,7 +29,12 @@ public class ProductService {
         List<Product> products = new ArrayList<>();
         for (String[] data : productData) {
             Product product = converter.convert(data);
-            products.add(product);
+            if (product != null) {
+                products.add(product);
+            }
+            else{
+                invalidProducts.add(data);
+            }
         }
         return products;
     }

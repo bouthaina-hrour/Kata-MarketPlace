@@ -5,7 +5,7 @@ import com.kata.marketplace.model.Product;
 public class ProductConverter {
     public Product convert(String[] data) {
         if (data.length < 5) {
-            throw new IllegalArgumentException("Invalid data array for Product conversion.");
+            return null;
         }
 
         Product product = new Product();

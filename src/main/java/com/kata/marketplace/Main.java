@@ -12,6 +12,7 @@ import com.kata.marketplace.utils.CsvReader;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -33,6 +34,12 @@ public class Main {
             VendorIncomeCalculator vendorIncomeCalculator = new VendorIncomeCalculator(productSoldData, productVendorData);
 
             double totalIncome = vendorIncomeCalculator.calculateGlobalIncome();
+            if (!productService.getInvalidProducts().isEmpty()) {
+
+                for (String[] data : productService.getInvalidProducts()) {
+                    System.out.println("Invalid data product: " + Arrays.toString(data));
+                }
+            }
 
             System.out.println("Total Global Income: $" + totalIncome);
 
